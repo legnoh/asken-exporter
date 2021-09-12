@@ -1,0 +1,21 @@
+# HELP asken_today_score Asken Today's score
+# TYPE asken_today_score gauge
+asken_today_score{date="2021-09-01"} 80.0
+# HELP asken_today_advice_info Asken Today's advice
+# TYPE asken_today_advice_info gauge
+asken_today_advice_info{advice="食事記録が無いためアドバイスが計算できません。",date="2021-09-01"} 1.0
+# HELP asken_today_detail_advice_info Asken Today's detail advice
+# TYPE asken_today_detail_advice_info gauge
+asken_today_detail_advice_info{advice="食事記録が無いためアドバイスが計算できません。",date="2021-09-01"} 1.0
+# HELP asken_weekly_advice_info Asken weekly advice
+# TYPE asken_weekly_advice_info gauge
+asken_weekly_advice_info{advice="カロリーコントロールがばっちりでしたね♪明日もこの調子でいきましょう。\n\nカロリーは主にたんぱく質・脂質・炭水化物の摂取量から計算されます。サンプルさんの食生活では摂取カロリーはちょうど良いのですが、その3つのなかで特に脂質が多くなっています。食べた食事の中で脂質が多かったものは\n\n1位　チキン　　　2位　から揚げ　　　3位　カレー\n\n脂質が多かったメニューはよく食べるものでしたか?\n脂質が多い食事はたまに食べるだけなら問題ありません。食べたいものを食べて、息抜きをすることもダイエット継続の秘訣です。メリハリを大切にしましょうね。",date="2021-09-01"} 1.0
+# HELP asken_weekly_detail_advice_info Asken weekly detail advice
+# TYPE asken_weekly_detail_advice_info gauge
+asken_weekly_detail_advice_info{advice="栄養価を見ると、特にビタミンB2とカルシウムとビタミンB1 が不足しています。足りないビタミン・ミネラルを補い、食事のバランスを整えるには以下の食材を使ったメニューがおすすめです。\n\n・マッシュルーム(ビタミンB2・副菜)\n・切干し大根(カルシウム・副菜)\n・豆苗(ビタミンB1・副菜)\n・ドライいちじく(カルシウム・果物)\n・オレンジ(ビタミンB1・果物)\n・柿(果物)\n・レバー(ビタミンB2)\n・高野豆腐(カルシウム)\n・そら豆(ビタミンB1)",date="2021-09-01"} 1.0
+# HELP asken_monthly_advice_info Asken monthly advice
+# TYPE asken_monthly_advice_info gauge
+asken_monthly_advice_info{advice="カロリーの面から見ると、摂取カロリーは少ないようです。食事量を無理をして抑えていなければ良いのですが・・・。ストレスがたまらないようにコントロールしてくださいね。\n\n栄養バランスを見ると、サンプルさんの食生活では特にたんぱく質が不足気味ようです。\n\nたんぱく質は、ダイエット中に欠かせない栄養素です。たんぱく質を含む脂身の少ない肉・魚・豆腐のおかずをお食事に取り入れてみてくださいね。",date="2021-09-01"} 1.0
+# HELP asken_monthly_detail_advice_info Asken monthly detail advice
+# TYPE asken_monthly_detail_advice_info gauge
+asken_monthly_detail_advice_info{advice="栄養価を見ると、特にビタミンCとビタミンAとカルシウム が不足しています。足りないビタミン・ミネラルを補い、食事のバランスを整えるには以下の食材を使ったメニューがおすすめです。\n\n・じゃが芋(ビタミンC・副菜)\n・モロヘイヤ(ビタミンA・副菜)\n・刻み昆布(カルシウム・副菜)\n・レバー(ビタミンA・主菜)\n・いわし(カルシウム・主菜)\n・グレープフルーツ(ビタミンC・果物)\n・マンゴー(ドライフルーツ)(ビタミンA・果物)\n・ドライいちじく(カルシウム・果物)\n・キウイ(ビタミンC)",date="2021-09-01"} 1.0
