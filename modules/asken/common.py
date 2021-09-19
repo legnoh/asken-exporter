@@ -1,5 +1,3 @@
-from prometheus_client import CollectorRegistry, Gauge, write_to_textfile, Counter, Info
-
 def login(driver, email, password):
     driver.get('https://www.asken.jp/login');
     driver.implicitly_wait(10);

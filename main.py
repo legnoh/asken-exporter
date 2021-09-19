@@ -9,7 +9,7 @@ from prometheus_client import CollectorRegistry, Gauge, Info, write_to_textfile
 registry = CollectorRegistry()
 driver = webdriver.Chrome()
 
-today = time.strftime("%Y-%m-01")
+today = time.strftime("%Y-%m-%d")
 
 # login
 username = os.environ['ASKEN_USERNAME']
