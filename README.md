@@ -1,4 +1,4 @@
-asken_exporter
+asken-exporter
 ====
 
 Prometheus exporter for [あすけん](https://www.asken.jp).
@@ -8,10 +8,17 @@ Prometheus exporter for [あすけん](https://www.asken.jp).
 This exporter script works for creating metrics file only.
 
 ```sh
-git clone https://github.com/legnoh/asken_exporter.git && cd asken_exporter
+# clone
+git clone https://github.com/legnoh/asken-exporter.git && cd asken-exporter
 pipenv install
 pipenv shell
-ASKEN_EMAIL=$YOUR_EMAIL ASKEN_PASSWORD=$YOUR_PASSWORD pipenv run main
+
+# please fulfil your credentials
+cp example.env .env
+vi .env
+
+# execute
+pipenv run main
 ```
 
 Therefore, you should be hosted in other container to export metrics.
@@ -25,7 +32,6 @@ curl -vvv http://localhost:9101/asken.prom
 ## Metrics
 
 please check [example](./container/example/asken.prom)
-
 
 ## Disclaim / 免責事項
 
