@@ -31,8 +31,8 @@ jobs:
       run: pipenv run main
       env:
         DISPLAY: :99
-        ASKEN_EMAIL: ${{ secrets.WITHINGS_EMAIL }}
-        ASKEN_PASSWORD: ${{ secrets.WITHINGS_PASSWORD }}
+        ASKEN_USERNAME: ${{ secrets.ASKEN_USERNAME }}
+        ASKEN_PASSWORD: ${{ secrets.ASKEN_PASSWORD }}
         TZ: ${{ secrets.TZ }}
     - name: setup GCP access
       uses: google-github-actions/setup-gcloud@master
