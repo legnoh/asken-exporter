@@ -17,12 +17,12 @@ jobs:
       - name: Check Browser Version
         run: |
           browser_version=$(google-chrome --version | sed -e 's/Google Chrome //g' | sed -e 's/ //g')
-          echo ${browser_version}
+          echo "browser_version=${browser_version}" >> $GITHUB_ENV
 
       - name: Check Library Version
         run: |
           library_version=$(cat Pipfile | grep "chromedriver-binary" | sed -e 's/chromedriver-binary = "==//g' | sed -e 's/.0"//g')
-          echo ${library_version}
+          echo "library_version=${library_version}" >> $GITHUB_ENV
       
       - name: Check, Replace
         run: |
