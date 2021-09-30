@@ -1,0 +1,20 @@
+name: Check Browser Version
+
+on:
+  push:
+  workflow_dispatch:
+  schedule:
+    - cron: '0/6 * * * *'
+
+jobs:
+  check-version:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Check Out Repo
+        uses: actions/checkout@v2
+      
+      - name: Check Version
+        run: |
+          version=$(google-chrome --version | sed -e 's/Google Chrome //g' | awk -F '.' '{print $1}')
+          echo $version
