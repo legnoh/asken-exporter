@@ -14,7 +14,12 @@ jobs:
       - name: Check Out Repo
         uses: actions/checkout@v2
       
-      - name: Check Version
+      - name: Check Browser Version
         run: |
-          version=$(google-chrome --version | sed -e 's/Google Chrome //g' | awk -F '.' '{print $1}')
-          echo $version
+          browser_version=$(google-chrome --version | sed -e 's/Google Chrome //g')
+          echo ${browser_version}
+
+      - name: Check Library Version
+        run: |
+          library_version=$(cat Pipfile | grep "chromedriver-binary" | sed -e 's/chromedriver-binary = "==//g' | sed -e 's/"//g')
+          echo ${library_version}
