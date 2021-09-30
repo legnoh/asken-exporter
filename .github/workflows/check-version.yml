@@ -16,7 +16,7 @@ jobs:
       
       - name: Check Browser Version
         run: |
-          browser_version=$(google-chrome --version | sed -e 's/Google Chrome //g')
+          browser_version=$(google-chrome --version | sed -e 's/Google Chrome //g' | sed -e 's/ //g')
           echo ${browser_version}
 
       - name: Check Library Version
