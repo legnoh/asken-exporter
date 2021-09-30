@@ -21,5 +21,20 @@ jobs:
 
       - name: Check Library Version
         run: |
-          library_version=$(cat Pipfile | grep "chromedriver-binary" | sed -e 's/chromedriver-binary = "==//g' | sed -e 's/"//g')
+          library_version=$(cat Pipfile | grep "chromedriver-binary" | sed -e 's/chromedriver-binary = "==//g' | sed -e 's/.0"//g')
           echo ${library_version}
+      
+      - name: Check, Replace
+        run: |
+          if [[ ${browser_version} != ${library_version} ]]
+          then
+            git checkout -b update-to-${browser-version}
+            sed -i "s/${library_version}/${browser_version}/g" Pipfile
+          else
+            exit 0
+          fi
+      - name: make PullRequest
+        uses: repo-sync/pull-request@v2
+        with:
+          destination_branch: "main"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
