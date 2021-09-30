@@ -26,7 +26,7 @@ jobs:
       
       - name: Check, Replace
         run: |
-          if [[ "${browser_version}" != "${library_version}" ]]
+          if [ "${browser_version}" != "${library_version}" ]
           then
             echo trueeeeeeee
             git checkout -b update-to-${browser-version}
