@@ -28,6 +28,7 @@ jobs:
         run: |
           if [[ ${browser_version} != ${library_version} ]]
           then
+            echo trueeeeeeee
             git checkout -b update-to-${browser-version}
             sed -i "s/${library_version}/${browser_version}/g" Pipfile
           else
