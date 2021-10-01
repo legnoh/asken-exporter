@@ -1,4 +1,4 @@
-name: Check Browser Version
+name: Update chrome-driver Version
 
 on:
   workflow_dispatch:
