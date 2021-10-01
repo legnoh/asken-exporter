@@ -10,7 +10,6 @@ jobs:
   check-version:
     runs-on: ubuntu-latest
     steps:
-
       - name: Check Out Repo
         uses: actions/checkout@v2
       - uses: actions/setup-python@v2
@@ -20,28 +19,20 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install pipenv
-      - name: Check Browser Version
+      - name: Check Browser and Library Version
         run: |
           browser_version=$(google-chrome --version | sed -e 's/Google Chrome //g' | sed -e 's/ //g')
-          echo "browser_version=${browser_version}" >> $GITHUB_ENV
-
-      - name: Check Library Version
-        run: |
           library_version=$(cat Pipfile | grep "chromedriver-binary" | sed -e 's/chromedriver-binary = "==//g' | sed -e 's/.0"//g')
+          echo "browser_version=${browser_version}" >> $GITHUB_ENV
           echo "library_version=${library_version}" >> $GITHUB_ENV
-      
-      - name: Check, Replace
+      - name: Replace
+        if: env.browser_version != env.library_version
         run: |
-          set -eux
-          if [ "${browser_version}" != "${library_version}" ]
-          then
-            sed -i "s/${library_version}/${browser_version}/g" Pipfile
-            pipenv update
-          else
-            exit 0
-          fi
+          sed -i "s/${library_version}/${browser_version}/g" Pipfile
+          pipenv update
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
+        if: env.browser_version != env.library_version
         with:
           delete-branch: true
           title: Update chromium-driver to ${{ env.browser_version }}
