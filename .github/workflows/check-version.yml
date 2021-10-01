@@ -32,6 +32,7 @@ jobs:
       
       - name: Check, Replace
         run: |
+          set -eux
           if [ "${browser_version}" != "${library_version}" ]
           then
             branch_name="update-to-${browser_version}"
