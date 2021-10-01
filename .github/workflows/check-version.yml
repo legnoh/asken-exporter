@@ -35,10 +35,6 @@ jobs:
           set -eux
           if [ "${browser_version}" != "${library_version}" ]
           then
-            branch_name="update-to-${browser_version}"
-            echo "branch_name=${branch_name}" >> $GITHUB_ENV
-            
-            git checkout -b "update-to-${browser_version}"
             sed -i "s/${library_version}/${browser_version}/g" Pipfile
             pipenv update
           else
