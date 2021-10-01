@@ -1,7 +1,6 @@
 name: Check Browser Version
 
 on:
-  push:
   workflow_dispatch:
   schedule:
     - cron: '0/6 * * * *'
@@ -36,3 +35,4 @@ jobs:
         with:
           delete-branch: true
           title: Update chromium-driver to ${{ env.browser_version }}
+          commit-message: Update chromium-driver to ${{ env.browser_version }}
