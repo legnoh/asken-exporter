@@ -41,18 +41,9 @@ jobs:
             git checkout -b "update-to-${browser_version}"
             sed -i "s/${library_version}/${browser_version}/g" Pipfile
             pipenv update
-
-            git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git config --global user.name "GitHub Action"
-            git commit -am"Update chromium-driver to ${browser_version}"
           else
             exit 0
           fi
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ env.branch_name }}
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
