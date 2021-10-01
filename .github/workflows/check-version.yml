@@ -48,9 +48,14 @@ jobs:
           else
             exit 0
           fi
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ env.branch_name }}
       - name: make PullRequest
         uses: repo-sync/pull-request@v2
         with:
           destination_branch: "master"
-          source_branch: "${{ env.branch_name }}"
+          source_branch: ${{ env.branch_name }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
