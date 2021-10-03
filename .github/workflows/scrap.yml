@@ -45,3 +45,9 @@ jobs:
       with:
         path: ./container/public/asken.prom
         destination: ${{ secrets.BUCKET_NAME }}/
+    - name: Update Prometheus Data in RaspberryPi
+      uses: benc-uk/workflow-dispatch@v1
+      with:
+        repo: legnoh/life-metrics-grafana-deployment
+        workflow: Get Latest Metrics Data from GCS
+        token: ${{ secrets.GITHUB_TOKEN }}
