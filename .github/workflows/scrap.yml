@@ -48,5 +48,6 @@ jobs:
       uses: benc-uk/workflow-dispatch@v1
       with:
         repo: legnoh/life-metrics-grafana-deployment
+        ref: refs/heads/main
         workflow: Get Latest Metrics Data from GCS
         token: ${{ secrets.PERSONAL_TOKEN }}
