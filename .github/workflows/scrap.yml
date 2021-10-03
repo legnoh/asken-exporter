@@ -1,8 +1,5 @@
 name: Upload Asken prom data
 
-permissions:
-  actions: write
-
 on:
   push:
   workflow_dispatch:
