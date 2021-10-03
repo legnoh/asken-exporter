@@ -53,4 +53,4 @@ jobs:
       with:
         repo: legnoh/life-metrics-grafana-deployment
         workflow: Get Latest Metrics Data from GCS
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.PERSONAL_TOKEN }}
