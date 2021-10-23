@@ -1,4 +1,4 @@
-name: Upload Asken prom data
+name: CI
 
 on:
   pull_request:
