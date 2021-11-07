@@ -37,7 +37,7 @@ jobs:
       - name: Replace
         if: env.browser_major_version != env.library_major_version
         run: |
-          sed -i "s/${library_version}/${browser_version}/g" Pipfile
+          sed -i "s/${library_version}.*/${browser_version}.*/g" Pipfile
           pipenv update
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
