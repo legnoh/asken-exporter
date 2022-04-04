@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "9a2411897eda361498373b460e33c3fd49da070b978be275456046ec5a052c87"
+            "sha256": "9a75b00c224662d58d0c5cd2d13de4893198434e06af6df60eb64fa937565e37"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -96,10 +96,10 @@
         },
         "chromedriver-binary": {
             "hashes": [
-                "sha256:f383b0c831c5cf86ab27b1ba7ff96f25e1d04f2df1b880affd1a4ec98da7cbc6"
+                "sha256:c8dcbb528e05fb477c0e6f9138af6aeb29bcc92dff38808f82e3ce3945c6b020"
             ],
             "index": "pypi",
-            "version": "==98.0.4758.102.0"
+            "version": "==100.0.4896.60.0"
         },
         "cryptography": {
             "hashes": [
@@ -282,7 +282,7 @@
                 "sha256:939de3e7a6161af0c887ef91b7d41a53e7c5a1ca976325f429cb46ea9bc30ecc",
                 "sha256:de526c12914f0c550d15924c62d72abc48d6fe7364aa87328337a31007fe8a4f"
             ],
-            "markers": "python_full_version >= '3.7.0'",
+            "markers": "python_version >= '3.7'",
             "version": "==2.0.1"
         },
         "trio": {
@@ -290,7 +290,7 @@
                 "sha256:670a52d3115d0e879e1ac838a4eb999af32f858163e3a704fe4839de2a676070",
                 "sha256:fb2d48e4eab0dfb786a472cd514aaadc71e3445b203bc300bad93daa75d77c1a"
             ],
-            "markers": "python_full_version >= '3.7.0'",
+            "markers": "python_version >= '3.7'",
             "version": "==0.20.0"
         },
         "trio-websocket": {
@@ -326,7 +326,7 @@
                 "sha256:2218cb57952d90b9fca325c0dcfb08c3bda93e8fd8070b0a17f048e2e47a521b",
                 "sha256:a2e56bfd5c7cd83c1369d83b5feccd6d37798b74872866e62616e0ecf111bda8"
             ],
-            "markers": "python_full_version >= '3.7.0'",
+            "markers": "python_version >= '3.7'",
             "version": "==1.1.0"
         }
     },
