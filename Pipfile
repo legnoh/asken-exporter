@@ -6,7 +6,7 @@ name = "pypi"
 [packages]
 mypy = "*"
 selenium = "*"
-chromedriver-binary = "==100.*"
+chromedriver-binary = "==101.*"
 pyyaml = "*"
 prometheus-client = "*"
 
