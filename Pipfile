@@ -6,14 +6,12 @@ name = "pypi"
 [packages]
 mypy = "*"
 selenium = "*"
-chromedriver-binary = "==103.*"
 pyyaml = "*"
 prometheus-client = "*"
-
-[dev-packages]
+chromedriver-binary-auto = "*"
 
 [requires]
-python_version = "3"
+python_version = "3.10"
 
 [scripts]
 main = "python3 main.py"
