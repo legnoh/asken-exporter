@@ -180,10 +180,10 @@
         },
         "selenium": {
             "hashes": [
-                "sha256:a733dd77d3171b846893f4d51b18967d809313f547a10974e26579f9ce797462"
+                "sha256:3f1999875ef487ae676a254e7293a68041f1f1ec76be81402d8a1cd5a481bf3b"
             ],
             "index": "pypi",
-            "version": "==4.5.0"
+            "version": "==4.6.0"
         },
         "sniffio": {
             "hashes": [
