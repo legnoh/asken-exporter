@@ -8,7 +8,7 @@ mypy = "*"
 selenium = "*"
 pyyaml = "*"
 prometheus-client = "*"
-chromedriver-binary = "==107.*"
+chromedriver-binary = "==108.*"
 
 [requires]
 python_version = "3"
