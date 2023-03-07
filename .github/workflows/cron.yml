@@ -20,6 +20,7 @@ jobs:
     - name: Setup Python
       uses: actions/setup-python@v3
       with:
+        python-version: '3.x'
         cache: pipenv
     - name: Install dependencies
       run: pipenv install
