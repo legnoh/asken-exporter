@@ -4,11 +4,11 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-mypy = "*"
-selenium = "*"
-pyyaml = "*"
-prometheus-client = "*"
 chromedriver-binary-auto = "*"
+mypy = "*"
+prometheus-client = "*"
+pyyaml = "*"
+selenium = "*"
 
 [requires]
 python_version = "3"
