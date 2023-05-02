@@ -8,6 +8,7 @@ on:
     - '.github/**'
     - '.vscode/**'
     - '.example.env'
+  workflow_dispatch:
 
 jobs:
   docker-build-and-push:
