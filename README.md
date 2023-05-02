@@ -8,10 +8,13 @@ Prometheus exporter for [あすけん](https://www.asken.jp).
 ### docker
 
 ```sh
-docker run -p 8000:8000 \
+docker run -d -p 8000:8000 \
   -e ASKEN_USERNAME="yourname@mail.com" \
   -e ASKEN_PASSWORD="yourPassw0rd" \
   legnoh/asken-exporter
+
+# wait 60s and get request
+curl http://localhost:8000/metrics
 ```
 
 ### local
