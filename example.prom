@@ -1,0 +1,21 @@
+# HELP asken_score あすけん > 健康度
+# TYPE asken_score gauge
+asken_score 65.0
+# HELP asken_daily_advice_info あすけん > アドバイス > 1日分
+# TYPE asken_daily_advice_info gauge
+asken_daily_advice_info{advice="4月30日のあすけん健康度 (?) は65点です。\n\nまずカロリーの面から見ると摂取カロリーはちょうど良いです。今よりも 適正体重に近づけるためには、さらに間食などの余分のカロリーを減らす工夫をするといいですね。\n\n栄養バランスを見ると、れぐのさんの食生活は低脂質でヘルシーですね。\n脂質を抑えるのに工夫した点などありましたか?どんな食事内容だったかを振り返ってみるのもいいですね。"} 1.0
+# HELP asken_daily_detail_advice_info あすけん > 栄養価アドバイス > 1日分
+# TYPE asken_daily_detail_advice_info gauge
+asken_daily_detail_advice_info{advice="栄養価を見ると、特にビタミンAとビタミンB2 が不足しています。足りないビタミン・ミネラルを補い、食事のバランスを整えるには以下の食材を使ったメニューがおすすめです。\n\n・穴子(ビタミンA・主菜)\n・マス(青魚)(ビタミンB2・主菜)\n・鶏もも(皮なし)(主菜)\n・プルーン(ビタミンA・果物)\n・グレープフルーツ(果物)\n・ヨーグルト(乳製品)\n・青梗菜(ビタミンA)\n・カレイ(ビタミンB2)"} 1.0
+# HELP asken_weekly_advice_info あすけん > アドバイス > 過去7日の平均
+# TYPE asken_weekly_advice_info gauge
+asken_weekly_advice_info{advice="まずカロリーの面ではカロリーコントロールがばっちりでしたね♪続けることで、着実に目標に近づいていきますよ。明日もこの調子でいきましょう。\n\n栄養バランスを見ると、炭水化物が控えめだったようですね。\n\n炭水化物・タンパク質・脂質のバランスを意識してみましょう♪炭水化物は摂取エネルギーの50%～65%が理想的なバランスです。"} 1.0
+# HELP asken_weekly_detail_advice_info あすけん > 栄養価アドバイス > 過去7日の平均
+# TYPE asken_weekly_detail_advice_info gauge
+asken_weekly_detail_advice_info{advice="栄養価を見ると、特にカルシウム が不足しています。足りないビタミン・ミネラルを補い、食事のバランスを整えるには以下の食材を使ったメニューがおすすめです。\n\n・モロヘイヤ(カルシウム・副菜)\n・ワカメ(海藻類)(副菜)\n・ドライいちじく(カルシウム・果物)\n・りんご(果物)\n・チーズ(カルシウム・乳製品)\n・牛乳(乳製品)"} 1.0
+# HELP asken_monthly_advice_info あすけん > アドバイス > 月平均
+# TYPE asken_monthly_advice_info gauge
+asken_monthly_advice_info 1.0
+# HELP asken_monthly_detail_advice_info あすけん > 栄養価アドバイス > 月平均
+# TYPE asken_monthly_detail_advice_info gauge
+asken_monthly_detail_advice_info 1.0

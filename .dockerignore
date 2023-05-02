@@ -1,0 +1,12 @@
+.github
+.vscode
+modules/__pycache__
+.dockerignore
+.env
+.git
+.gitignore
+Dockerfile
+example.env
+example.prom
+Pipfile
+Pipfile.lock

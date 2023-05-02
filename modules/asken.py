@@ -59,6 +59,7 @@ def get_advice(driver, path, premium=False):
     return "食事記録が無いためアドバイスが取得できません。"
 
 def get_detail_advice(driver):
+
     try:
         advice = driver.find_element(By.CSS_SELECTOR, "div#detail_advice > div.text_advice").text
         return advice

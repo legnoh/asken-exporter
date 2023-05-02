@@ -1,44 +1,84 @@
-import os
-import time
-from selenium import webdriver
-import chromedriver_binary
-import modules.asken as asken
-from prometheus_client import CollectorRegistry, Gauge, Info, write_to_textfile
 
-# initialize
+import os, platform, time
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service as ChromiumService
+from webdriver_manager.chrome import ChromeDriverManager
+
+import modules.asken as asken
+from prometheus_client import CollectorRegistry, Gauge, Info, start_http_server
+
+# initialize exporter
+print("initializing exporter...")
 registry = CollectorRegistry()
-driver = webdriver.Chrome()
+start_http_server(int(os.environ.get('PORT', 8000)), registry=registry)
+
+# initialize chromium & selenium webdriver
+print("initializing chromium & selenium webdriver...")
+options = webdriver.ChromeOptions()
+options.add_argument('--disable-dev-shm-usage')
+
+chromedriver_path = ChromeDriverManager().install()
+if platform.system() == 'Linux':
+    chromedriver_path = "/usr/bin/chromedriver"
+
+driver = webdriver.Chrome(
+    options=options,
+    service=ChromiumService(executable_path=chromedriver_path)
+)
 
 today = time.strftime("%Y-%m-%d")
 
 # login
+print("login to asken...")
 username = os.environ['ASKEN_USERNAME']
 password = os.environ['ASKEN_PASSWORD']
 ak_driver = asken.login(driver, username, password)
 
-# premium?
-premium = asken.is_premium(driver)
+metrics = {
+    "daily": {},
+    "weekly": {},
+    "monthly": {},
+}
 
-# get daily score
-daily_score = asken.get_latest_daily_score(ak_driver)
-score_gauge = Gauge("asken_score", "あすけん > 健康度", registry=registry)
-score_gauge.set(daily_score)
-
-metrics = {}
-targets = [
+advice_targets = [
     { 'name': 'daily', 'path': '/0', 'desc': '1日分' },
     { 'name': 'weekly', 'path': '/1', 'desc': '過去7日の平均' },
     { 'name': 'monthly', 'path': '/2', 'desc': '月平均' },
 ]
 
-for target in targets:
-    advice = asken.get_advice(driver, target['path'], premium)
-    detail_advice = asken.get_detail_advice(driver)
-    advice_info = Info("asken_" + target['name'] + "_advice", "あすけん > アドバイス > " + target['desc'], registry=registry)
-    advice_info.info( { "advice": advice } )
-    detail_advice_info = Info("asken_" + target['name'] + "_detail_advice", "あすけん > 栄養価アドバイス > " + target['desc'], registry=registry)
-    detail_advice_info.info( { "advice": detail_advice } )
+# premium?
+premium = asken.is_premium(driver)
 
-ak_driver.quit()
-write_to_textfile('./container/public/asken.prom', registry)
-print("scraping account is successfull!")
+# create metrics
+print("create metrics instances...")
+score_gauge = Gauge("asken_score", "あすけん > 健康度", registry=registry)
+for target in advice_targets:
+    metrics[target['name']]['advice'] = Info(
+        "asken_{n}_advice".format(n=target['name']),
+        "あすけん > アドバイス > {d}".format(d=target['desc']),
+        registry=registry
+    )
+    metrics[target['name']]['detail_advice'] = Info(
+        "asken_{n}_detail_advice".format(n=target['name']),
+        "あすけん > 栄養価アドバイス > {d}".format(d=target['desc']),
+        registry=registry
+    )
+
+while True:
+
+    # get daily score
+    print("getting daily score...")
+    daily_score = asken.get_latest_daily_score(ak_driver)
+    score_gauge.set(daily_score)
+
+    # get advice
+    print("getting advices...")
+    for target in advice_targets:
+        advice = asken.get_advice(driver, target['path'], premium)
+        metrics[target['name']]['advice'].info( { "advice": advice } )
+
+        detail_advice = asken.get_detail_advice(driver)
+        metrics[target['name']]['detail_advice'].info( { "advice": detail_advice } )
+
+    print("scraping account is successfully.")
+    time.sleep(3600*4)
