@@ -71,14 +71,14 @@ if __name__ == '__main__':
         # get advice
         print("getting advices...")
         for target in advice_targets:
-            advice = asken.get_advice(driver, target['path'], premium)
+            advice = asken.get_advice(ak_driver, target['path'], premium)
             metrics[target['name']]['advice'].info( { "advice": advice } )
 
-            detail_advice = asken.get_detail_advice(driver)
+            detail_advice = asken.get_detail_advice(ak_driver)
             metrics[target['name']]['detail_advice'].info( { "advice": detail_advice } )
 
         print("scraping account is successfully.")
 
-        driver.close()
+        ak_driver.close()
 
         time.sleep(3600*4)
