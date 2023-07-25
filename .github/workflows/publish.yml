@@ -49,9 +49,9 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/asken-exporter:latest
 
-      # - name: Restart Docker on RaspberryPi
-      #   uses: benc-uk/workflow-dispatch@v1.2.2
-      #   with:
-      #     repo: legnoh/life-metrics-grafana-deployment
-      #     workflow: Reset docker-compose setting
-      #     token: ${{ secrets.PERSONAL_TOKEN }}
+      - name: Restart Docker on RaspberryPi
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          repo: legnoh/life-dashboard
+          workflow: Start grafstation
+          token: ${{ secrets.PERSONAL_TOKEN }}
