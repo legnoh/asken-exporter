@@ -20,13 +20,20 @@ if __name__ == '__main__':
     options = webdriver.ChromeOptions()
     options.add_argument('--disable-dev-shm-usage')
 
-    if platform.system() == 'Linux':
-        logging.info("initializing chromium...")
-        driver = webdriver.Chrome(service=ChromiumService(), options=options)
-    else:
-        logging.info("initializing chrome...")
-        driver = webdriver.Chrome(service=ChromeService(), options=options)
-    driver.implicitly_wait(10)
+    driver_ready = False
+    while driver_ready == False:
+        try:
+            if platform.system() == 'Linux':
+                logging.info("initializing chromium...")
+                driver = webdriver.Chrome(service=ChromiumService(), options=options)
+            else:
+                logging.info("initializing chrome...")
+                driver = webdriver.Chrome(service=ChromeService(), options=options)
+            driver.implicitly_wait(10)
+            driver_ready = True
+        except (WebDriverException) as e:
+            logging.error(e)
+            continue
 
     today = time.strftime("%Y-%m-%d")
 
