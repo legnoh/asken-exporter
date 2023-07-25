@@ -115,10 +115,10 @@
         },
         "chromedriver-binary-auto": {
             "hashes": [
-                "sha256:97c2d6c8f45567c8d2a0e7fcf3d4024fa1db9047a21364f77a6fa876c57202f3"
+                "sha256:ff5094cdcd03dd1465136343befd580921f6879761544facebf513d44f4821e9"
             ],
             "index": "pypi",
-            "version": "==0.2.6"
+            "version": "==0.3.0"
         },
         "exceptiongroup": {
             "hashes": [
