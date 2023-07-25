@@ -2,7 +2,6 @@ import logging, os, platform, time
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromiumService
 from selenium.webdriver.chrome.service import Service as ChromeService
-from selenium.common.exceptions import WebDriverException
 
 import modules.asken as asken
 from prometheus_client import CollectorRegistry, Gauge, Info, start_http_server
@@ -20,20 +19,13 @@ if __name__ == '__main__':
     options = webdriver.ChromeOptions()
     options.add_argument('--disable-dev-shm-usage')
 
-    driver_ready = False
-    while driver_ready == False:
-        try:
-            if platform.system() == 'Linux':
-                logging.info("initializing chromium...")
-                driver = webdriver.Chrome(service=ChromiumService(), options=options)
-            else:
-                logging.info("initializing chrome...")
-                driver = webdriver.Chrome(service=ChromeService(), options=options)
-            driver.implicitly_wait(10)
-            driver_ready = True
-        except (WebDriverException) as e:
-            logging.error(e)
-            continue
+    if platform.system() == 'Linux':
+        logging.info("initializing chromium...")
+        driver = webdriver.Chrome(service=ChromiumService(), options=options)
+    else:
+        logging.info("initializing chrome...")
+        driver = webdriver.Chrome(service=ChromeService(), options=options)
+    driver.implicitly_wait(10)
 
     today = time.strftime("%Y-%m-%d")
 
