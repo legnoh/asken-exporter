@@ -4,7 +4,6 @@ from selenium.webdriver.common.by import By
 
 def login(driver, email, password):
     driver.get('https://www.asken.jp/login')
-    driver.implicitly_wait(10)
     email_box = driver.find_element(By.NAME, 'data[CustomerMember][email]')
     email_box.send_keys(email)
     password_box = driver.find_element(By.NAME, 'data[CustomerMember][passwd_plain]')

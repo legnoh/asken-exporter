@@ -25,6 +25,7 @@ if __name__ == '__main__':
     else:
         logging.info("initializing chrome...")
         driver = webdriver.Chrome(service=ChromeService(), options=options)
+    driver.implicitly_wait(10)
 
     today = time.strftime("%Y-%m-%d")
 
@@ -82,7 +83,5 @@ if __name__ == '__main__':
             metrics[target['name']]['detail_advice'].info( { "advice": detail_advice } )
 
         logging.info("scraping account is successfully.")
-
         ak_driver.close()
-
         time.sleep(3600*4)
