@@ -2,6 +2,7 @@ import logging, os, platform, time
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromiumService
 from selenium.webdriver.chrome.service import Service as ChromeService
+from selenium.common.exceptions import WebDriverException
 
 import modules.asken as asken
 from prometheus_client import CollectorRegistry, Gauge, Info, start_http_server
