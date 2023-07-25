@@ -44,7 +44,7 @@ if __name__ == '__main__':
     ]
 
     # premium?
-    premium = asken.is_premium(driver)
+    premium = asken.is_premium(ak_driver)
 
     # create metrics
     print("create metrics instances...")
