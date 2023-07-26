@@ -5,6 +5,9 @@ updates:
     schedule:
       interval: daily
       time: "04:00" # 13:00(UTC+9)
+    ignore:
+      - dependency-name: "benc-uk/workflow-dispatch"
+        versions: ["121"]
   - package-ecosystem: "pip"
     directory: "/"
     schedule:

@@ -50,7 +50,7 @@ jobs:
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/asken-exporter:latest
 
       - name: Restart Docker on RaspberryPi
-        uses: benc-uk/workflow-dispatch@v121
+        uses: benc-uk/workflow-dispatch@v1
         with:
           repo: legnoh/life-dashboard
           workflow: Start grafstation
