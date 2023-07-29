@@ -7,7 +7,8 @@ import modules.asken as asken
 from prometheus_client import CollectorRegistry, Gauge, Info, start_http_server
 
 log_format = '%(asctime)s[%(filename)s:%(lineno)d][%(levelname)s] %(message)s'
-logging.basicConfig(format=log_format, datefmt='%Y-%m-%d %H:%M:%S%z', level=logging.INFO)
+log_level = os.getenv("LOGLEVEL", logging.INFO)
+logging.basicConfig(format=log_format, datefmt='%Y-%m-%d %H:%M:%S%z', level=log_level)
 
 if __name__ == '__main__':
 
@@ -83,5 +84,4 @@ if __name__ == '__main__':
             metrics[target['name']]['detail_advice'].info( { "advice": detail_advice } )
 
         logging.info("scraping account is successfully.")
-        ak_driver.close()
         time.sleep(3600*4)
