@@ -132,12 +132,12 @@
         },
         "selenium": {
             "hashes": [
-                "sha256:3c413a4f1b8af67824703195e3b1c19cfb1c3186c799efa035d55fd59d6dd59f",
-                "sha256:f0f9185c01ae249a321529c4e3aa0edc2a900642e61fdbb76988cd72d2762ece"
+                "sha256:0d14b0d9842366f38fb5f8f842cf7c042bcfa062affc6a0a86e4d634bdd0fe54",
+                "sha256:be9824a9354a7fe288e3fad9ceb6a9c65ddc7c44545d23ad0ebf4ce202b19893"
             ],
             "index": "pypi",
             "markers": "python_version >= '3.8'",
-            "version": "==4.13.0"
+            "version": "==4.14.0"
         },
         "sniffio": {
             "hashes": [
@@ -178,7 +178,6 @@
                 "sha256:7a7c7003b000adf9e7ca2a377c9688bbc54ed41b985789ed576570342a375cd2",
                 "sha256:b19e1a85d206b56d7df1d5e683df4a7725252a964e3993648dd0fb5a1c157564"
             ],
-            "index": "pypi",
             "markers": "python_version >= '3.7'",
             "version": "==2.0.6"
         },
