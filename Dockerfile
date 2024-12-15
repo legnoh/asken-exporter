@@ -1,18 +1,19 @@
-FROM seleniarm/standalone-chromium:latest
+FROM selenium/standalone-chromium:latest
 
 USER root
-WORKDIR /usr/src/app
+ENV WORKDIR=/usr/src/app
+WORKDIR ${WORKDIR}
 
-ENV DISPLAY=:99
 ENV TZ="Asia/Tokyo"
+ENV SE_CHROMEDRIVER="/usr/bin/chromedriver"
+ENV DEBUGFILE_DIR="/tmp/asken-exporter"
 
-RUN apt -y update \
-    && apt -y install python3 python3-pip
+RUN apt -y install python3 python3-pip
 
 COPY . ${WORKDIR}
 
-RUN pip3 install --break-system-packages -r requirements.txt \
-    && rm -rf requirements.txt
+RUN pip3 install --break-system-packages -r requirements.txt
+RUN mkdir -p ${DEBUGFILE_DIR}
 
 EXPOSE 8000
 

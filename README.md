@@ -8,9 +8,24 @@ Prometheus exporter for [あすけん](https://www.asken.jp).
 ### docker
 
 ```sh
+# please fulfil your credentials
+cat <<EOF > .env
+ASKEN_USERNAME=youremail@localhost
+ASKEN_PASSWORD=yourawesomepassword
+EOF
+
+# start
 docker run -d -p 8000:8000 \
-  -e ASKEN_USERNAME="yourname@mail.com" \
-  -e ASKEN_PASSWORD="yourPassw0rd" \
+  --shm-size="2g" \
+  --env-file .env \
+  legnoh/asken-exporter
+
+# option: start with debugdir mount
+mkdir -p $HOME/asken-exporter
+docker run -d -p 8000:8000 \
+  --shm-size="2g" \
+  --env-file .env \
+  -v $HOME/asken-exporter:/tmp/asken-exporter \
   legnoh/asken-exporter
 
 # wait 60s and get request

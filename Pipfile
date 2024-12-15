@@ -8,6 +8,8 @@ prometheus-client = "*"
 pyyaml = "*"
 selenium = "*"
 
+[dev-packages]
+
 [requires]
 python_version = "3"
 
