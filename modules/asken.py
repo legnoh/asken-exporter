@@ -8,22 +8,30 @@ def login(driver:WebDriver, email:str, password:str) -> WebDriver | None:
         logging.info("## jump to login page...")
         driver.get('https://www.asken.jp/login')
 
-        email_box = driver.find_element(By.NAME, 'data[CustomerMember][email]')
+        # ログインページにアクセスした後にログインページにいない場合、既にログイン済なのでそのまま返す
+        if '/login' not in driver.current_url:
+            logging.info("### already logged in")
+            return driver
+
+        # 各種フォームを入力
+        email_box = driver.find_element(By.CSS_SELECTOR, 'input#CustomerMemberEmail')
         email_box.send_keys(email)
-        password_box = driver.find_element(By.NAME, 'data[CustomerMember][passwd_plain]')
+        password_box = driver.find_element(By.CSS_SELECTOR, 'input#CustomerMemberPasswdPlain')
         password_box.send_keys(password)
+        autologin_checkbox = driver.find_element(By.CSS_SELECTOR, "input#CustomerMemberAutologin")
+        autologin_checkbox.click()
         email_box.submit()
 
         # ログイン実行後もまだloginがURLに含まれる場合、ログインに失敗していると判定する
         if  '/login' in driver.current_url:
-            logging.error("## login check was failed. plase check your email & password!")
+            logging.error("### login check was failed. plase check your email & password!")
             return None
 
-        logging.info("## login check successfully")
+        logging.info("### login check successfully")
         return driver
 
     except NoSuchElementException as e:
-        logging.error("## login failed with selenium error: %s", e.msg)
+        logging.error("### login failed with selenium error: %s", e.msg)
         save_debug_information(driver, "login")
         return None
 

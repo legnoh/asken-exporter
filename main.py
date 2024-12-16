@@ -17,6 +17,7 @@ if __name__ == '__main__':
 
     logging.info("# initializing chromium options...")
     options = webdriver.ChromeOptions()
+    options.add_argument("--user-data-dir=/tmp/asken-exporter/userdata")
 
     today = time.strftime("%Y-%m-%d")
 
