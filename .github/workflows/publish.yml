@@ -30,17 +30,6 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
-      - name: Install pipenv
-        run: pipx install pipenv
-      
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.x'
-
-      - name: Generate requirements.txt
-        run: pipenv requirements > requirements.txt
-
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
