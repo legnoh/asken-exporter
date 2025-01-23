@@ -1,4 +1,5 @@
 FROM selenium/standalone-chromium:latest
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 
 USER root
 ENV WORKDIR=/usr/src/app
@@ -8,15 +9,11 @@ ENV TZ="Asia/Tokyo"
 ENV SE_CHROMEDRIVER="/usr/bin/chromedriver"
 ENV DEBUGFILE_DIR="/tmp/asken-exporter"
 
-RUN apt -y install python3 python3-pip
-
 COPY . ${WORKDIR}
 
-RUN pip3 install --break-system-packages -r requirements.txt
+RUN uv sync --frozen
 RUN mkdir -p ${DEBUGFILE_DIR}
 
 EXPOSE 8000
 
-ENTRYPOINT [ "./docker-entrypoint.sh" ]
-
-CMD [ "python3", "./main.py" ]
+CMD ["uv", "run", "main.py"]

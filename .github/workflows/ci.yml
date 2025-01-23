@@ -8,13 +8,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-    - name: Install pipenv
-      run: pipx install pipenv
-    - name: Setup Python
-      uses: actions/setup-python@v5
+
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Setup uv
+      uses: astral-sh/setup-uv@v5
       with:
-        python-version: '3.x'
-        cache: pipenv
+        enable-cache: true
+
     - name: Install dependencies
-      run: pipenv install
+      run: uv sync --dev

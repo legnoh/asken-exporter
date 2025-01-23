@@ -37,14 +37,14 @@ curl http://localhost:8000/metrics
 ```sh
 # clone
 git clone https://github.com/legnoh/asken-exporter.git && cd asken-exporter
-pipenv install
+uv sync --dev
 
 # please fulfil your credentials
 cp example.env .env
 vi .env
 
 # execute
-pipenv run main
+uv run main.py
 ```
 
 ## Metrics
