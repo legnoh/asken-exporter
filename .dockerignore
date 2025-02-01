@@ -8,5 +8,3 @@ modules/__pycache__
 Dockerfile
 example.env
 example.prom
-Pipfile
-Pipfile.lock
