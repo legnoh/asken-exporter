@@ -1,21 +1,54 @@
 name: CI
 
 on:
+  push:
+    branches: [main]
+    paths-ignore: [.github/**, .vscode/**]
   pull_request:
+    branches: [main]
   workflow_dispatch:
 
 jobs:
-  build:
+  ci:
     runs-on: ubuntu-latest
     steps:
+      - name: Check Out Repo 
+        uses: actions/checkout@v4
 
-    - name: Checkout Repository
-      uses: actions/checkout@v4
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
 
-    - name: Setup uv
-      uses: astral-sh/setup-uv@v5
-      with:
-        enable-cache: true
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
 
-    - name: Install dependencies
-      run: uv sync --dev
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+
+      - name: Define reponame & mode
+        id: defines
+        run: |
+          echo "reponame=${GITHUB_REPOSITORY#*/}" >> $GITHUB_OUTPUT
+          if [[ "${{ github.event_name }}" == "pull_request_target" ]]; then
+            echo "enable_push=false" >> $GITHUB_OUTPUT
+          else
+            echo "enable_push=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          platforms: linux/amd64,linux/arm64
+          push: ${{ steps.defines.outputs.enable_push }}
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ steps.defines.outputs.reponame }}:latest
+
+      - name: Docker Hub Description
+        if: github.event_name != 'pull_request_target'
+        uses: peter-evans/dockerhub-description@v4
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+          repository: ${{ secrets.DOCKER_HUB_USERNAME }}/${{ steps.defines.outputs.reponame }}
