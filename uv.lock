@@ -14,10 +14,10 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
-    { name = "prometheus-client" },
-    { name = "pyvirtualdisplay" },
-    { name = "pyyaml" },
-    { name = "selenium" },
+    { name = "prometheus-client", specifier = ">=0.21.1" },
+    { name = "pyvirtualdisplay", specifier = ">=3.0" },
+    { name = "pyyaml", specifier = ">=6.0.2" },
+    { name = "selenium", specifier = ">=4.28.0" },
 ]
 
 [[package]]
