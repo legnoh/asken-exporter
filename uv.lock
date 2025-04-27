@@ -1,4 +1,5 @@
 version = 1
+revision = 1
 requires-python = ">=3.13"
 
 [[package]]
@@ -136,7 +137,7 @@ wheels = [
 
 [[package]]
 name = "selenium"
-version = "4.28.0"
+version = "4.31.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "certifi" },
@@ -146,9 +147,9 @@ dependencies = [
     { name = "urllib3", extra = ["socks"] },
     { name = "websocket-client" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/21/88/a0c08bb8ead76b859733ff063c7835be64430156781ede1e2a873dc51128/selenium-4.28.0.tar.gz", hash = "sha256:a9fae6eef48d470a1b0c6e45185d96f0dafb025e8da4b346cc41e4da3ac54fa0", size = 981603 }
+sdist = { url = "https://files.pythonhosted.org/packages/e0/bf/642cce8b5a9edad8e4880fdefbeb24f69bec2086b1121c63f883c412b797/selenium-4.31.0.tar.gz", hash = "sha256:441cffc436a2e6659fe3cfb012692435652efd38b0d368d16f661a5db47825f5", size = 855418 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/6f/bc/e28b31d3e8000a93a462f7bf718ae96851a9a502a5a4bef98e2e31011c77/selenium-4.28.0-py3-none-any.whl", hash = "sha256:3d6a2e8e1b850a1078884ea19f4e011ecdc12263434d87a0b78769836fb82dd8", size = 9530372 },
+    { url = "https://files.pythonhosted.org/packages/32/53/212db779d2481b0a8428365960596f8d5a4d482ae12c441d0507fd54aaf2/selenium-4.31.0-py3-none-any.whl", hash = "sha256:7b8b8d5e424d7133cb7aa656263b19ac505ec26d65c0f921a696e7e2c5ccd95b", size = 9350584 },
 ]
 
 [[package]]
