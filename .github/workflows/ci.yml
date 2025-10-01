@@ -1,5 +1,8 @@
 name: CI
 
+permissions:
+  contents: read
+
 on:
   push:
     branches: [main]
@@ -12,7 +15,7 @@ jobs:
   ci:
     runs-on: ubuntu-latest
     steps:
-      - name: Check Out Repo 
+      - name: Check Out Repo
         uses: actions/checkout@v5
 
       - name: Set up QEMU
