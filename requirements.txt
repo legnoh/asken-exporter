@@ -1,4 +1,4 @@
 prometheus-client>=0.25.0
 pyvirtualdisplay>=3.0
 pyyaml>=6.0.3
-selenium>=4.42.0
+selenium>=4.43.0
