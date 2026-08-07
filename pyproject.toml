@@ -3,7 +3,7 @@ name = "asken-exporter"
 version = "0.1.0"
 description = "Prometheus exporter for Asken"
 readme = "README.md"
-requires-python = ">=3.14.6"
+requires-python = ">=3.14.7"
 dependencies = [
     "prometheus-client>=0.26.0",
     "pyvirtualdisplay>=3.0",
