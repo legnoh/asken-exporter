@@ -14,13 +14,14 @@ def login(driver:WebDriver, email:str, password:str) -> WebDriver | None:
             return driver
 
         # 各種フォームを入力
-        email_box = driver.find_element(By.CSS_SELECTOR, 'input#CustomerMemberEmail')
+        email_box = driver.find_element(By.NAME, 'CustomerMember[email]')
         email_box.send_keys(email)
-        password_box = driver.find_element(By.CSS_SELECTOR, 'input#CustomerMemberPasswdPlain')
+        password_box = driver.find_element(By.NAME, 'CustomerMember[passwd_plain]')
         password_box.send_keys(password)
-        autologin_checkbox = driver.find_element(By.CSS_SELECTOR, "input#CustomerMemberAutologin")
+        autologin_checkbox = driver.find_element(By.CSS_SELECTOR, "input[type='checkbox'][name='CustomerMember[autologin]']")
         autologin_checkbox.click()
-        email_box.submit()
+        submit_button = driver.find_element(By.NAME, "Submit[submit]")
+        submit_button.click()
 
         # ログイン実行後もまだloginがURLに含まれる場合、ログインに失敗していると判定する
         if  '/login' in driver.current_url:
